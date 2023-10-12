@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListemContainer from "./components/ItemListenContainer/ItemListemContainer";
@@ -10,9 +10,18 @@ import Cart from "./components/Cart/Cart";
 import BannerPrincipal from "./components/BannerPrincipal/BannerPrincipal";
 import Profile from "./components/Profile/Profile";
 import Favorites from "./components/Favorites/Favorites";
+import WebFont from 'webfontloader';
 
 
 function App() {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Lato']
+      }
+    });
+   }, []);
+
   return (
     <>
       <BrowserRouter>
