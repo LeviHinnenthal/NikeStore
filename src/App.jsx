@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListemContainer from "./components/ItemListenContainer/ItemListemContainer";
 import Footer from "./components/Footer/Footer";
-import ItemCount from "./components/ItemCount/ItemCount";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
@@ -33,6 +32,10 @@ function App() {
               <BannerPrincipal key="1" />,
               <ItemListemContainer greeting={"All products"} key="2"/>,
             ]}
+          />
+          <Route
+            path="/shop"
+            element={<ItemListemContainer />}
           />
           <Route
             path="/category/:categoryId"

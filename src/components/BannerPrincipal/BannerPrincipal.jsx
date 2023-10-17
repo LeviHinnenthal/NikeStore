@@ -12,7 +12,7 @@ const BannerPrincipal = () => {
         Takeoff in the XXIs newest colorway ‘Akoya,’ built with <br />
         Zoom technology to raise your game to another level.
       </p>
-      <Link to="/item/1" className="rounded-full bg-black text-white text-xl border-2 border-black mt-6 mb-16 px-10 py-2 hover:bg-transparent hover:text-black">Shop</Link>
+      <Link to="/item/1" className="rounded-full bg-black text-white text-xl border-2 border-black mt-6 mb-10 px-10 py-2 hover:bg-transparent hover:text-black">Shop</Link>
     </div>
   );
 };

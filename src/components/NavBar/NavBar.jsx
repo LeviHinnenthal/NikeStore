@@ -8,6 +8,7 @@ import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../NextUiComponents/SearchIcon";
 import { Link, NavLink } from "react-router-dom";
 import NavMobile from "./NavMobile";
+import ProfileWidget from "../ProfileWidget/ProfileWidget";
 
 const NavBar = () => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +25,14 @@ const NavBar = () => {
             />
           </Link>
           <div className="headerOptions flex absolute left-2/4 -translate-x-2/4 font-semibold text-lg">
+            <NavLink
+              to={`/shop`}
+              className={({ isActive }) =>
+                isActive ? "ActiveOption mx-2" : "Option mx-2"
+              }
+            >
+              Shop
+            </NavLink>
             <NavLink
               to={`/category/new`}
               className={({ isActive }) =>
@@ -96,15 +105,14 @@ const NavBar = () => {
               }
             />
 
-            <Link to="/profile" className="icon cursor-pointer mx-0 w-8">
-              <img src={user2} alt="User" />
-            </Link>
             <Link to="/favorites" className="icon cursor-pointer mx-0 w-8">
               <img src={heart} alt="Heart" />
             </Link>
             <Link to="/cart" className="icon cursor-pointer mx-0 w-8">
               <CartWidget />
             </Link>
+
+            <ProfileWidget />
           </div>
         </div>
       </div>
