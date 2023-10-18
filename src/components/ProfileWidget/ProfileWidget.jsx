@@ -29,9 +29,6 @@ const ProfileWidget = () => {
           <DropdownItem key="settings">
             <a href="/profile">My profile</a>
           </DropdownItem>
-          <DropdownItem key="configurations">Settings</DropdownItem>
-
-          <DropdownItem key="help_and_feedback">Purchases</DropdownItem>
           <DropdownItem key="logout" color="danger">
             Log Out
           </DropdownItem>

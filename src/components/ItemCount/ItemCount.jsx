@@ -48,16 +48,16 @@ const ItemCount = ({ onAdd, initial, stock }) => {
         >
           Add to cart
         </Button>
-        <Button
+        {/* <Button
           className="text-tiny text-black bg-white border-1 border-black"
           variant="flat"
           color="default"
           radius="xl"
           size="md"
-          onClick={() => onAdd(quantity)}
+          onClick={console.log("added to wishlist")}
         >
           Add to wishlist
-        </Button>
+        </Button> */}
       </div>
     </>
   );

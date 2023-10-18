@@ -1,12 +1,13 @@
 import React from "react";
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { Link, NavLink } from "react-router-dom";
+import ItemCount from "../ItemCount/ItemCount";
 
 const Item = ({ id, name, category, img, stock, price, description }) => {
   return (
     <Link to={`/item/${id}`}>
       <Card
-        shadow="sm"
+        shadow="none"
         key={id}
         isPressable
         onPress={() => console.log("item pressed")}
@@ -26,7 +27,7 @@ const Item = ({ id, name, category, img, stock, price, description }) => {
           <b>{name}</b>
 
           <p className="text-default-500 mr-2">USD{price}</p>
-          <p>View product</p>
+          <Button className="w-full mt-2">View product</Button>
         </CardFooter>
       </Card>
     </Link>
