@@ -1,19 +1,16 @@
-import React from "react";
-import { Button, Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import { Link, NavLink } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
 
-const Item = ({ id, name, category, img, stock, price, description }) => {
+import { Image } from "@nextui-org/react";
+import { Link, NavLink } from "react-router-dom";
+
+
+const Item = ({ id, name, img, price }) => {
   return (
     <Link to={`/item/${id}`}>
-      <Card
-        shadow="none"
+      <div
         key={id}
-        isPressable
-        onPress={() => console.log("item pressed")}
-        className="hover:scale-[1.05]"
+        className="hover:scale-[1.05] transition-all bg-white rounded-xl shadow-md"
       >
-        <CardBody className="overflow-visible p-0">
+        <div className="overflow-visible p-0">
           <Image
             shadow="sm"
             radius="lg"
@@ -22,14 +19,14 @@ const Item = ({ id, name, category, img, stock, price, description }) => {
             className="w-auto object-cover h-auto transition-all"
             src={img}
           />
-        </CardBody>
-        <CardFooter className="text-small justify-between flex flex-col items-start">
+        </div>
+        <div className="text-small justify-between flex flex-col items-start p-4">
           <b>{name}</b>
 
           <p className="text-default-500 mr-2">USD{price}</p>
-          <Button className="w-full mt-2">View product</Button>
-        </CardFooter>
-      </Card>
+          <p className="w-full mt-2">View product</p>
+        </div>
+      </div>
     </Link>
   );
 };

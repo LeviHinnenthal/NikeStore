@@ -1,8 +1,6 @@
 import { useState, createContext } from "react";
 
-export const CartContext = createContext({
- 
-});
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
@@ -10,7 +8,7 @@ export const CartProvider = ({ children }) => {
 
   const addItem = (item, quantity) => {
     if (!isInCart(item.id)) {
-      setCart(prev => [...prev, { ...item, quantity }]);
+      setCart((prev) => [...prev, { ...item, quantity, size: item.size }]);
     } else {
       console.error("Product already added");
     }
@@ -30,11 +28,16 @@ export const CartProvider = ({ children }) => {
   };
 
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-  const total = cart.reduce((total, item) => total + item.quantity * item.price, 0);
-  
+  const total = cart.reduce(
+    (total, item) => total + item.quantity * item.price,
+    0
+  );
+
   return (
-    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, total, totalQuantity }}>
-      { children }
+    <CartContext.Provider
+      value={{ cart, addItem, removeItem, clearCart, total, totalQuantity }}
+    >
+      {children}
     </CartContext.Provider>
   );
 };

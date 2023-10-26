@@ -15,23 +15,34 @@ const ItemDetail = ({
   stock,
 }) => {
   const [imgPrincipal, setImgPrincipal] = useState("");
-
   const [quantityAdded, setQuantityAdded] = useState(0);
   const { addItem } = useContext(CartContext);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [sizeAlert, setSizeAlert] = useState(false);
 
   const handleOnAdd = (quantity) => {
-    setQuantityAdded(quantity);
-    const item = {
-      id,
-      name,
-      price,
-      img,
-    };
-    addItem(item, quantity);
+    if (selectedSize != null) {
+      setQuantityAdded(quantity);
+      const item = {
+        id,
+        name,
+        price,
+        img,
+        size: selectedSize,
+      };
+      addItem(item, quantity);
+      setSizeAlert(false);
+    } else {
+      setSizeAlert(true);
+    }
   };
 
   const handleImageHover = (newImageSrc) => {
     setImgPrincipal(newImageSrc);
+  };
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
   };
 
   return (
@@ -50,7 +61,7 @@ const ItemDetail = ({
           ))}
         </div>
 
-        <Card className="w-full md:w-[51%] mr-[1%] h-[80vh]">
+        <Card className="w-full max-h-[600px] md:w-[51%] mr-[1%] h-[80vh]">
           <img
             alt="Product Image"
             className="object-contain z-1 absolute w-full bg-[#f6f6f6] h-full object-center"
@@ -84,13 +95,26 @@ const ItemDetail = ({
                   {sizes.map((size, index) => (
                     <p
                       key={index}
-                      className=" size border-black border-1 px-4 py-2 m-2 ml-0 w-fit rounded-full"
+                      className={`size border-black border-1 px-4 py-2 m-2 ml-0 w-fit rounded-full cursor-pointer ${
+                        selectedSize === size ? "bg-black text-white" : ""
+                      }`}
+                      onClick={() => handleSizeClick(size)}
                     >
                       {size}
                     </p>
                   ))}
                 </div>
-                <ItemCount initial={1} stock={10} onAdd={handleOnAdd} />
+                <ItemCount
+                  initial={1}
+                  stock={10}
+                  onAdd={handleOnAdd}
+                  selectedSize={selectedSize}
+                />
+                {sizeAlert == true ? (
+                  <p className="text-red-500 mt-2">Select a size.</p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </Card>

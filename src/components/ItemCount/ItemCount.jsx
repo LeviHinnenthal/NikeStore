@@ -18,9 +18,9 @@ const ItemCount = ({ onAdd, initial, stock }) => {
   };
 
   return (
-    <>
-      <div className="addToCartContainer flex w-auto  ">
-        <div className="flex items-center justify-center rounded-lg px-1  py-1 mr-2">
+    <div className="flex mt-2">
+      <Button className="addToCartContainer flex w-auto mr-2">
+        <div className="flex items-center justify-center rounded-lg px-1 py-1">
           <p>Quantity</p>
           <div
             className="text-tiny text-black w-6 h-full justify-center rounded-lg flex items-center cursor-pointer"
@@ -36,10 +36,10 @@ const ItemCount = ({ onAdd, initial, stock }) => {
             +
           </div>
         </div>
-      </div>
+      </Button>
       <div className="botones">
         <Button
-          className="text-tiny text-white bg-black border-1 border-black mt-2 mr-2"
+          className="text-tiny text-white bg-black border-1 border-black"
           variant="flat"
           color="default"
           radius="xl"
@@ -48,18 +48,9 @@ const ItemCount = ({ onAdd, initial, stock }) => {
         >
           Add to cart
         </Button>
-        {/* <Button
-          className="text-tiny text-black bg-white border-1 border-black"
-          variant="flat"
-          color="default"
-          radius="xl"
-          size="md"
-          onClick={console.log("added to wishlist")}
-        >
-          Add to wishlist
-        </Button> */}
+       
       </div>
-    </>
+    </div>
   );
 };
 

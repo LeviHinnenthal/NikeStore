@@ -28,7 +28,7 @@ const NavBar = () => {
             <NavLink
               to={`/shop`}
               className={({ isActive }) =>
-                isActive ? "ActiveOption mx-2" : "Option mx-2"
+                isActive ? "ActiveOption mx-4" : "Option mx-4"
               }
             >
               Shop
@@ -36,7 +36,7 @@ const NavBar = () => {
             <NavLink
               to={`/category/new`}
               className={({ isActive }) =>
-                isActive ? "ActiveOption mx-2" : "Option mx-2"
+                isActive ? "ActiveOption mx-4" : "Option mx-4"
               }
             >
               New
@@ -44,7 +44,7 @@ const NavBar = () => {
             <NavLink
               to={`/category/men`}
               className={({ isActive }) =>
-                isActive ? "ActiveOption mx-2" : "Option mx-2"
+                isActive ? "ActiveOption mx-4" : "Option mx-4"
               }
             >
               Men
@@ -52,7 +52,7 @@ const NavBar = () => {
             <NavLink
               to={`/category/women`}
               className={({ isActive }) =>
-                isActive ? "ActiveOption mx-2" : "Option mx-2"
+                isActive ? "ActiveOption mx-4" : "Option mx-4"
               }
             >
               Women
@@ -60,7 +60,7 @@ const NavBar = () => {
             <NavLink
               to={`/category/kids`}
               className={({ isActive }) =>
-                isActive ? "ActiveOption mx-2" : "Option mx-2"
+                isActive ? "ActiveOption mx-4" : "Option mx-4"
               }
             >
               Kids
@@ -105,10 +105,10 @@ const NavBar = () => {
               }
             />
 
-            <Link to="/favorites" className="icon cursor-pointer mx-0 w-8">
+            <Link to="/favorites" className="icon cursor-pointer mx-1 w-8">
               <img src={heart} alt="Heart" />
             </Link>
-            <Link to="/cart" className="icon cursor-pointer mx-0 w-8">
+            <Link to="/cart" className="icon cursor-pointer mx-1 w-8">
               <CartWidget />
             </Link>
 

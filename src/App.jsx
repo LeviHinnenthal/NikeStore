@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import ItemListemContainer from "./components/ItemListenContainer/ItemListemContainer";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
@@ -11,6 +11,8 @@ import Profile from "./components/Profile/Profile";
 import Favorites from "./components/Favorites/Favorites";
 import WebFont from "webfontloader";
 import { CartProvider } from "./context/CartContext";
+import Checkout from "./components/Checkout/Checkout";
+import Summary from "./components/Checkout/Summary";
 
 function App() {
   useEffect(() => {
@@ -31,18 +33,20 @@ function App() {
               path="/"
               element={[
                 <BannerPrincipal key="1" />,
-                <ItemListemContainer greeting={"All products"} key="2" />,
+                <ItemListContainer greeting={"All products"} key="2" />,
               ]}
             />
-            <Route path="/shop" element={<ItemListemContainer />} />
+            <Route path="/shop" element={<ItemListContainer />} />
             <Route
               path="/category/:categoryId"
-              element={<ItemListemContainer />}
+              element={<ItemListContainer />}
             />
             <Route path="/item/:itemId" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/summary" element={<Summary />} />
             <Route
               path="*"
               element={

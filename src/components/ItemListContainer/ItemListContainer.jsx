@@ -8,8 +8,9 @@ import ItemList from "../ItemList/ItemList";
 import { useParams, useLocation } from "react-router-dom";
 import BannerPrincipal from "../BannerPrincipal/BannerPrincipal";
 import OrderBy from "../OrderBy/OrderBy";
+import { Spinner } from "@nextui-org/react";
 
-const ItemListemContainer = ({ greeting }) => {
+const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
 
   const { categoryId } = useParams();
@@ -26,7 +27,7 @@ const ItemListemContainer = ({ greeting }) => {
   }, [categoryId]);
 
   return (
-    <div className="h-auto">
+    <div className="h-auto max-w-screen-2xl mx-auto">
       {location.pathname != "/" ? (
         <div className="sortContainer flex w-full justify-end px-6 my-8">
           <div className="text-transparent w-[86px] desktopElement">.</div>
@@ -55,10 +56,14 @@ const ItemListemContainer = ({ greeting }) => {
       )}
 
       <div className="productsContainer flex justify-center flex-wrap md:mx-auto md:mb-14">
-        <ItemList products={products} category={categoryId} />
+        {products == [] ? (
+          <Spinner />
+        ) : (
+          <ItemList products={products} category={categoryId} />
+        )}
       </div>
     </div>
   );
 };
 
-export default ItemListemContainer;
+export default ItemListContainer;
