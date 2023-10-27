@@ -14,7 +14,11 @@ const CartItem = ({ id, name, price, img, quantity, size }) => {
     <Card className="flex flex-row items-center justify-between mb-[1vw]">
       <div className="leftContainer flex flex-col md:flex-row justify-between">
         <Card>
-          <img className="h-[200px] w-screen object-cover md:w-[150px]" src={img} alt={name} />
+          <img
+            className="h-[200px] w-screen object-cover md:w-[150px]"
+            src={img}
+            alt={name}
+          />
         </Card>
         <div className="md:ml-4">
           <div className="flex flex-col items-start p-4 justify-between h-full">
@@ -24,7 +28,7 @@ const CartItem = ({ id, name, price, img, quantity, size }) => {
               <p>Quantity: {quantity}</p> {/* Display the quantity here */}
               <p>Size: {size}</p> {/* Display the quantity here */}
             </div>
-            <div className="wishlistAndDelete flex justify-between w-full">
+            <div className="delete flex justify-between w-full">
               <div
                 onClick={() => handleRemoveItem()}
                 className="cursor-pointer mobileElement"

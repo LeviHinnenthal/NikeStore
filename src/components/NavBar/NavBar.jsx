@@ -1,8 +1,5 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import CartWidget from "./CartWidget";
-import heart from "../../assets/heart.svg";
-import user2 from "../../assets/user2.svg";
-import search from "../../assets/search.svg";
 import NikeLogo from "../../assets/nike.png";
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../NextUiComponents/SearchIcon";
@@ -11,8 +8,6 @@ import NavMobile from "./NavMobile";
 import ProfileWidget from "../ProfileWidget/ProfileWidget";
 
 const NavBar = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
       <div className="w-full border-b-2 sticky top-0 z-11 bg-white/70 backdrop-blur-xl z-20 desktopElement">
@@ -105,9 +100,6 @@ const NavBar = () => {
               }
             />
 
-            <Link to="/favorites" className="icon cursor-pointer mx-1 w-8">
-              <img src={heart} alt="Heart" />
-            </Link>
             <Link to="/cart" className="icon cursor-pointer mx-1 w-8">
               <CartWidget />
             </Link>

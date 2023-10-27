@@ -1,8 +1,8 @@
 import { useContext, React } from "react";
-import PayingMethods from "./PayingMethods";
 import { Card } from "@nextui-org/react";
 import { CartContext } from "../../context/CartContext";
 import CheckoutBlock from "../Cart/CheckoutBlock";
+import AskData from "./AskData";
 
 const Checkout = () => {
   const { total } = useContext(CartContext);
@@ -12,11 +12,10 @@ const Checkout = () => {
       <h1 className="text-xl font-bold text-center my-4">Checkout</h1>
       <div className="flex flex-col md:flex-row m-4 w-[90%] md:w-[98%] mx-auto gap-[1vw]">
         <div className="m-auto mt-0 w-full md:w-[65vw]">
-         
-          <PayingMethods />
+          <AskData />
         </div>
         <div className="flex flex-col">
-         <CheckoutBlock />
+          <CheckoutBlock />
         </div>
       </div>
     </div>

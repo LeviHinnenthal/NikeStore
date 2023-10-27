@@ -50,12 +50,12 @@ const ItemDetail = ({
       <>
         {() => setImgPrincipal(img)}
         <div className="gallerySide flex justify-start md:flex-col md:w-[5%] mr-[1%]">
-          {imgDetail.map((imgD, index) => (
+          {Object.entries(imgDetail).map(([imgKey, imgValue]) => (
             <img
-              key={index}
-              src={imgD}
-              alt={`Image ${index}`}
-              onMouseEnter={() => handleImageHover(imgD)}
+              key={imgKey}
+              src={imgValue}
+              alt={`Image ${imgKey}`}
+              onMouseEnter={() => handleImageHover(imgValue)}
               className="cursor-pointer w-[50px] mr-2 md:mr-0 h-auto object-cover md:h-auto md:w-full rounded-lg shadow-sm mb-2 "
             />
           ))}
@@ -92,17 +92,26 @@ const ItemDetail = ({
                 </div>
 
                 <div className="sizes flex flex-wrap">
-                  {sizes.map((size, index) => (
+                  {Object.entries(sizes).map(([sizeKey, sizeValue]) => (
                     <p
-                      key={index}
+                      key={sizeKey}
                       className={`size border-black border-1 px-4 py-2 m-2 ml-0 w-fit rounded-full cursor-pointer ${
-                        selectedSize === size ? "bg-black text-white" : ""
+                        selectedSize === sizeValue ? "bg-black text-white" : ""
                       }`}
-                      onClick={() => handleSizeClick(size)}
+                      onClick={() => handleSizeClick(sizeValue)}
                     >
-                      {size}
+                      {sizeValue}
                     </p>
                   ))}
+
+                  {/* <p
+                    className={`size border-black border-1 px-4 py-2 m-2 ml-0 w-fit rounded-full cursor-pointer ${
+                      selectedSize === sizes.size ? "bg-black text-white" : ""
+                    }`}
+                    onClick={() => handleSizeClick(sizes.size)}
+                  >
+                    {sizes.size}
+                  </p> */}
                 </div>
                 <ItemCount
                   initial={1}

@@ -14,6 +14,7 @@ import { CartProvider } from "./context/CartContext";
 import Checkout from "./components/Checkout/Checkout";
 import Summary from "./components/Checkout/Summary";
 
+
 function App() {
   useEffect(() => {
     WebFont.load({

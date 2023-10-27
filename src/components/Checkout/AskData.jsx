@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button, Input } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 const AskData = (props) => {
   const [dataValidationStatus, setDataValidationStatus] = useState("invalid");
@@ -16,10 +17,6 @@ const AskData = (props) => {
       ...formData,
       [name]: value,
     });
-  };
-
-  const handleConfirmClick = () => {
-    // Realizar la validación: Verificar si todos los campos están llenos
     if (
       formData.name.trim() !== "" &&
       formData.lastName.trim() !== "" &&
@@ -27,10 +24,13 @@ const AskData = (props) => {
       formData.phoneNumber.trim() !== ""
     ) {
       setDataValidationStatus("valid");
-      props.setPaymentStep("creditCard");
     } else {
       setDataValidationStatus("invalid");
     }
+  };
+
+  const handleConfirmClick = () => {
+    // Realizar la validación: Verificar si todos los campos están llenos
   };
 
   return (
@@ -65,12 +65,25 @@ const AskData = (props) => {
           name="phoneNumber"
           onChange={handleInputChange}
         />
-        <Button
-          className="w-full bg-black text-white"
-          onClick={handleConfirmClick}
-        >
-          Confirm
-        </Button>
+        {dataValidationStatus === "valid" ? (
+          <Button
+            className="w-full bg-black text-white"
+            onClick={handleConfirmClick}
+          >
+            <Link to="/summary" className="w-full h-full flex items-center justify-center">
+            Confirm
+            </Link>
+            
+          </Button>
+        ) : (
+          <Button
+            className="w-full bg-black text-white"
+            onClick={handleConfirmClick}
+          >
+            Confirm
+          </Button>
+        )}
+
         {dataValidationStatus === "invalid" ? (
           <p className="text-red-500">Complete all fields.</p>
         ) : (
