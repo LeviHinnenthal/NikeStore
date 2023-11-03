@@ -7,6 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import NavMobile from "./NavMobile";
 import ProfileWidget from "../ProfileWidget/ProfileWidget";
 
+
 const NavBar = () => {
   return (
     <>

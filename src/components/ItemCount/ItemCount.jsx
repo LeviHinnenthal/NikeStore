@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 import { useState } from "react";
+import { toast } from 'sonner';
 
-const ItemCount = ({ onAdd, initial, stock }) => {
+const ItemCount = ({ onAdd, initial, stock, setAddedToCart }) => {
   const [quantity, setQuantity] = useState(initial);
 
   const increment = () => {
@@ -44,11 +45,10 @@ const ItemCount = ({ onAdd, initial, stock }) => {
           color="default"
           radius="xl"
           size="md"
-          onClick={() => onAdd(quantity)}
+          onClick={() => {onAdd(quantity)}}
         >
           Add to cart
         </Button>
-       
       </div>
     </div>
   );

@@ -25,8 +25,8 @@ const CartItem = ({ id, name, price, img, quantity, size }) => {
             <p className="font-bold font-lg">Product: {name}</p>
             <div className="priceQuantity my-4 md:my-0">
               <p>Price: USD{price}</p>
-              <p>Quantity: {quantity}</p> {/* Display the quantity here */}
-              <p>Size: {size}</p> {/* Display the quantity here */}
+              <p>Quantity: {quantity}</p>
+              <p>Size: {size}</p>
             </div>
             <div className="delete flex justify-between w-full">
               <div

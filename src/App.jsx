@@ -10,10 +10,10 @@ import BannerPrincipal from "./components/BannerPrincipal/BannerPrincipal";
 import Profile from "./components/Profile/Profile";
 import Favorites from "./components/Favorites/Favorites";
 import WebFont from "webfontloader";
+import { Toaster } from "sonner";
 import { CartProvider } from "./context/CartContext";
 import Checkout from "./components/Checkout/Checkout";
 import Summary from "./components/Checkout/Summary";
-
 
 function App() {
   useEffect(() => {
@@ -59,6 +59,7 @@ function App() {
           </Routes>
         </CartProvider>
       </BrowserRouter>
+      <Toaster />
       <Footer />
     </>
   );

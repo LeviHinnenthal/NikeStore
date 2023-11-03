@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, Button, Input } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
-const AskData = (props) => {
+const CheckoutForm = ({ onConfirm }) => {
   const [dataValidationStatus, setDataValidationStatus] = useState("invalid");
   const [formData, setFormData] = useState({
     name: "",
@@ -29,17 +29,20 @@ const AskData = (props) => {
     }
   };
 
-  const handleConfirmClick = () => {
-    // Realizar la validación: Verificar si todos los campos están llenos
+  const handleConfirm = (event) => {
+    event.preventDefault();
+    onConfirm(formData);
+    toast.success("Succesfull purchase");
   };
 
   return (
     <Card className="p-6 flex flex-col gap-6 justify-center items-center">
-      <div className="form w-2/4">
+      <div className="form w-full :mdw-2/4">
         <p className="text-center mb-2">First, we need some information.</p>
         <Input
           className="mb-2"
           type="text"
+          value={formData.name}
           placeholder="Name"
           name="name"
           onChange={handleInputChange}
@@ -47,6 +50,7 @@ const AskData = (props) => {
         <Input
           className="mb-2"
           type="text"
+          value={formData.lastName}
           placeholder="Last name"
           name="lastName"
           onChange={handleInputChange}
@@ -54,6 +58,7 @@ const AskData = (props) => {
         <Input
           className="mb-2"
           type="text"
+          value={formData.email}
           placeholder="Email"
           name="email"
           onChange={handleInputChange}
@@ -61,6 +66,7 @@ const AskData = (props) => {
         <Input
           className="mb-2"
           type="tel"
+          value={formData.phoneNumber}
           placeholder="Phone number"
           name="phoneNumber"
           onChange={handleInputChange}
@@ -68,18 +74,12 @@ const AskData = (props) => {
         {dataValidationStatus === "valid" ? (
           <Button
             className="w-full bg-black text-white"
-            onClick={handleConfirmClick}
+            onClick={handleConfirm}
           >
-            <Link to="/summary" className="w-full h-full flex items-center justify-center">
             Confirm
-            </Link>
-            
           </Button>
         ) : (
-          <Button
-            className="w-full bg-black text-white"
-            onClick={handleConfirmClick}
-          >
+          <Button onClick={()=>  toast.error("Complete all fields")} className="w-full bg-black/60 text-white cursor-not-allowed">
             Confirm
           </Button>
         )}
@@ -94,4 +94,4 @@ const AskData = (props) => {
   );
 };
 
-export default AskData;
+export default CheckoutForm;

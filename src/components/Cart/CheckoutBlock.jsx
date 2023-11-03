@@ -11,8 +11,8 @@ const CheckoutBlock = () => {
       <Card className="fixed mb-4 md:relative md:mb-0 w-[90%] z-20 bottom-0 rightContainer flex flex-col bg-white p-4 md:w-[33vw] h-fit">
         <h1 className="text-xl font-bold">Total amount</h1>
         <h3 className="mt-4">Products: USD{total} </h3>
-        <h3 className="mb-4">Shipping: USD5 </h3>
-        <h3 className="mb-4">Total: USD{total + 5} </h3>
+        <h3 className="mb-4">Shipping: Free Shipping </h3>
+        <h3 className="mb-4">Total: USD{total} </h3>
 
 
         {location.pathname == "/cart" ? (

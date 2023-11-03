@@ -14,13 +14,7 @@ const ProfileWidgetMobile = () => {
     <div className="flex items-center gap-4">
       <Dropdown placement="center">
         <DropdownTrigger>
-          {/* <img
-            // isBordered
-            // as="button"
-            // className="transition-transform w-6 h-6"
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-          /> */}
-          <p className="text-2xl">Profile</p>
+          <p className="text-2xl">My profile</p>
         </DropdownTrigger>
         <DropdownMenu aria-label="Profile Actions" variant="flat">
         

@@ -1,7 +1,9 @@
 import { React, useState, useEffect, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
-import { Card } from "@nextui-org/react";
+import { Button, Card, button } from "@nextui-org/react";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
+import { toast } from 'sonner';
 
 const ItemDetail = ({
   id,
@@ -19,6 +21,7 @@ const ItemDetail = ({
   const { addItem } = useContext(CartContext);
   const [selectedSize, setSelectedSize] = useState(null);
   const [sizeAlert, setSizeAlert] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const handleOnAdd = (quantity) => {
     if (selectedSize != null) {
@@ -31,9 +34,12 @@ const ItemDetail = ({
         size: selectedSize,
       };
       addItem(item, quantity);
+      setAddedToCart(true);
       setSizeAlert(false);
+      toast.success("Product added to cart");
     } else {
       setSizeAlert(true);
+      toast.error("You have to select a size");
     }
   };
 
@@ -103,22 +109,26 @@ const ItemDetail = ({
                       {sizeValue}
                     </p>
                   ))}
-
-                  {/* <p
-                    className={`size border-black border-1 px-4 py-2 m-2 ml-0 w-fit rounded-full cursor-pointer ${
-                      selectedSize === sizes.size ? "bg-black text-white" : ""
-                    }`}
-                    onClick={() => handleSizeClick(sizes.size)}
-                  >
-                    {sizes.size}
-                  </p> */}
                 </div>
-                <ItemCount
-                  initial={1}
-                  stock={10}
-                  onAdd={handleOnAdd}
-                  selectedSize={selectedSize}
-                />
+                {addedToCart ? (
+                  <Button>
+                    <Link
+                      className="w-full h-full flex items-center justify-center"
+                      to="/cart"
+                    >
+                      Go to cart
+                    </Link>
+                  </Button>
+                ) : (
+                  <ItemCount
+                    initial={1}
+                    stock={10}
+                    onAdd={handleOnAdd}
+                    selectedSize={selectedSize}
+                    setAddedToCart={setAddedToCart}
+                  />
+                )}
+
                 {sizeAlert == true ? (
                   <p className="text-red-500 mt-2">Select a size.</p>
                 ) : (

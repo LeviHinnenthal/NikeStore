@@ -12,19 +12,24 @@ const NavMobile = () => {
   const { totalQuantity } = useContext(CartContext);
   return (
     <>
-      <Link to="/" className="block w-fit">
+      <Link to="/" className="block w-fit z-10">
         <img src={NikeLogo} alt="NikeLogo" className="h-[50px]" />
       </Link>
 
-      <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden transition-all flex items-center"
-      >
-        {isOpen ? (
-          <RiCloseFill className="text-black text-3xl cursor-pointer z-10" />
-        ) : (
-          <RiMenu4Fill className="text-black text-3xl cursor-pointer z-10" />
-        )}
+      <div className="flex items-center z-10">
+        <Link to="/cart" className="icon h-fit cursor-pointer mx-1 w-8">
+          <CartWidget />
+        </Link>
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className="lg:hidden transition-all flex items-center"
+        >
+          {isOpen ? (
+            <RiCloseFill className="text-black text-3xl cursor-pointer z-10" />
+          ) : (
+            <RiMenu4Fill className="text-black text-3xl cursor-pointer z-10" />
+          )}
+        </div>
       </div>
 
       <div
@@ -33,11 +38,6 @@ const NavMobile = () => {
         }`}
       >
         <ProfileWidgetMobile />
-
-        <Link to="/cart" className="icon cursor-pointer mx-1 flex items-center" onClick={() => setIsOpen(false)}>
-          <p className="py-2 text-2xl mr-1">Cart</p>
-          <p className="text-xl">({totalQuantity})</p>
-        </Link>
 
         <NavLink
           onClick={() => setIsOpen(false)}

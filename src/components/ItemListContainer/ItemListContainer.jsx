@@ -7,7 +7,6 @@ import {
 import ItemList from "../ItemList/ItemList";
 import { useParams, useLocation } from "react-router-dom";
 import BannerPrincipal from "../BannerPrincipal/BannerPrincipal";
-import OrderBy from "../OrderBy/OrderBy";
 import { Spinner } from "@nextui-org/react";
 import { db } from "../../firebaseConfig";
 import { getDocs, collection, query, where } from "firebase/firestore";
@@ -62,7 +61,7 @@ const ItemListContainer = ({ greeting }) => {
                 </p>
               )}
 
-              <OrderBy />
+              
             </div>
           ) : (
             ""
