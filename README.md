@@ -23,7 +23,7 @@
 
 1- Clona este repositorio en tu máquina local:
 ```bash
-> git clone https://github.com/tu_usuario/tu-proyecto-nike-store-clone.git
+> git clone https://github.com/LeviHinnenthal/CoderReactJs.git
 ```
 2- Navega al directorio del proyecto:
 ```bash
