@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.desktopElement {
+  display: block;
+}
+.mobileElement {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .desktopElement {
+    display: none;
+  }
+  .mobileElement {
+    display: flex;
+  }
+}
