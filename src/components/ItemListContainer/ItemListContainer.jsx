@@ -1,9 +1,4 @@
 import { React, useEffect, useState } from "react";
-import {
-  getProductById,
-  getProducts,
-  getProductByCategory,
-} from "../../asyncMock";
 import ItemList from "../ItemList/ItemList";
 import { useParams, useLocation } from "react-router-dom";
 import BannerPrincipal from "../BannerPrincipal/BannerPrincipal";

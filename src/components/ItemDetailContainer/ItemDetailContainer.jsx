@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { getProductById } from "../../asyncMock";
 import { useParams } from "react-router";
 import { Spinner } from "@nextui-org/react";
 import { db } from "../../firebaseConfig";

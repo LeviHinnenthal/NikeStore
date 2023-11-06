@@ -8,7 +8,7 @@
 ![imagen](https://1000logos.net/wp-content/uploads/2021/11/Nike-Logo.png)
 
 
-[Puedes acceder a la versión en vivo del proyecto aquí.](https://www.google.com)
+[Puedes acceder a la versión en vivo del proyecto aquí.](https://nike-store-dusky.vercel.app/)
 
 ## Tecnologías utilizadas:
 - [ReactJs](https://react.dev/) - framework/librería de JS.
