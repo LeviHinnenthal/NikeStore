@@ -48,6 +48,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/summary" element={<Summary />} />
+            <Route path="/add-products" element={<AddProducts />} />
             <Route
               path="*"
               element={
