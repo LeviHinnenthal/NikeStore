@@ -1,22 +1,29 @@
 import { React, useRef, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { db } from "../../firebaseConfig";
 
 const AddProducts = () => {
-  const titleRef = useRef(null);
+  const categoryRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const imgPrincipalRef = useRef(null);
+  const img2Ref = useRef(null);
+  const img3Ref = useRef(null);
+  const img4Ref = useRef(null);
+  const img5Ref = useRef(null);
+  const nameRef = useRef(null);
   const priceRef = useRef(null);
-  const imgRef = useRef(null);
-  const starsRef = useRef(null);
+  const size1Ref = useRef(null);
+  const size2Ref = useRef(null);
+  const size3Ref = useRef(null);
+  const size4Ref = useRef(null);
 
   const [error, setError] = useState("");
 
   const validateInput = () => {
     // Validar que el título sea un string
     if (
-      typeof titleRef.current.value !== "string" ||
-      titleRef.current.value.trim() === ""
+      typeof nameRef.current.value !== "string" ||
+      nameRef.current.value.trim() === ""
     ) {
       setError("El título debe ser un string no vacío.");
       return false;
@@ -30,16 +37,9 @@ const AddProducts = () => {
     }
 
     // Validar que la img sea una URL
-    const imgValue = imgRef.current.value;
+    const imgValue = imgPrincipalRef.current.value;
     if (!isValidUrl(imgValue)) {
       setError("La URL de la imagen no es válida.");
-      return false;
-    }
-
-    // Validar que las stars estén en el rango de 0 a 5
-    const starsValue = parseInt(starsRef.current.value);
-    if (isNaN(starsValue) || starsValue < 0 || starsValue > 5) {
-      setError("Las estrellas deben estar en el rango de 0 a 5.");
       return false;
     }
 
@@ -57,57 +57,143 @@ const AddProducts = () => {
     if (validateInput()) {
       try {
         const docRef = await addDoc(collection(db, "products"), {
-          title: titleRef.current.value,
+          category: categoryRef.current.value,
+          description: descriptionRef.current.value,
+          img: imgPrincipalRef.current.value,
+          imgDetail: {
+            imgDetailed: imgPrincipalRef.current.value,
+            imgDetailed2: img2Ref.current.value,
+            imgDetailed3: img3Ref.current.value,
+            imgDetailed4: img4Ref.current.value,
+          },
+
+          name: nameRef.current.value,
           price: parseFloat(priceRef.current.value),
-          img: imgRef.current.value,
-          stars: parseInt(starsRef.current.value),
+          sizes: {
+            size1: size1Ref.current.value,
+            size2: size2Ref.current.value,
+            size3: size3Ref.current.value,
+            size4: size4Ref.current.value,
+          },
         });
         console.log("Document written with ID: ", docRef.id);
-        toast.success("Producto agregado correctamente");
+        // toast.success("Producto agregado correctamente");
         const clearInputs = () => {
-          titleRef.current.value = "";
+          // categoryRef.current.value = "";
+          // descriptionRef.current.value = "";
+          // imgPrincipalRef.current.value = "";
+          // img2Ref.current.value = "";
+          // img3Ref.current.value = "";
+          // img4Ref.current.value = "";
+          // img5Ref.current.value = "";
+          nameRef.current.value = "";
           priceRef.current.value = "";
-          imgRef.current.value = "";
-          starsRef.current.value = "";
+          // size1Ref.current.value = "";
+          // size2Ref.current.value = "";
+          // size3Ref.current.value = "";
+          // size4Ref.current.value = "";
         };
         clearInputs();
       } catch (e) {
         console.error("Error adding document: ", e);
-        toast.error("Error al agregar el producto");
+        // toast.error("Error al agregar el producto");
       }
     }
   };
 
   return (
-    <div className="flex flex-col shadow-lg p-10 rounded-lg mx-auto w-[500px] my-10 bg-primary-100 text-white">
+    <div className="flex flex-col shadow-lg p-10 rounded-lg mx-auto w-[500px] my-10 bg-black text-white">
       <h2 className="mb-6">ADD PRODUCT</h2>
       <form className="flex flex-col">
         <input
-          ref={titleRef}
-          id="title"
+          ref={categoryRef}
+          id="category"
           type="text"
-          placeholder="Título"
+          placeholder="Category"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={descriptionRef}
+          id="description"
+          type="text"
+          placeholder="Description"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={imgPrincipalRef}
+          id="imgPrincipal"
+          type="text"
+          placeholder="URL de la imagen principal"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={img2Ref}
+          id="img2"
+          type="text"
+          placeholder="URL de la imagen 2"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={img3Ref}
+          id="img3"
+          type="text"
+          placeholder="URL de la imagen 3"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={img4Ref}
+          id="img4"
+          type="text"
+          placeholder="URL de la imagen 4"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={img5Ref}
+          id="img5"
+          type="text"
+          placeholder="URL de la imagen 5"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={nameRef}
+          id="name"
+          type="text"
+          placeholder="Name of the product"
           className="border-1 rounded-lg p-2 bg-transparent mb-2"
         ></input>
         <input
           ref={priceRef}
           id="price"
           type="text"
-          placeholder="Precio"
+          placeholder="Price of the product"
           className="border-1 rounded-lg p-2 bg-transparent mb-2"
         ></input>
         <input
-          ref={imgRef}
-          id="img"
+          ref={size1Ref}
+          id="size1"
           type="text"
-          placeholder="URL de la imagen"
+          placeholder="Size1 of the product"
           className="border-1 rounded-lg p-2 bg-transparent mb-2"
         ></input>
         <input
-          ref={starsRef}
-          id="stars"
+          ref={size2Ref}
+          id="size2"
           type="text"
-          placeholder="Estrellas"
+          placeholder="Size2 of the product"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={size3Ref}
+          id="size2"
+          type="text"
+          placeholder="Size2 of the product"
+          className="border-1 rounded-lg p-2 bg-transparent mb-2"
+        ></input>
+        <input
+          ref={size4Ref}
+          id="size3"
+          type="text"
+          placeholder="Size3 of the product"
           className="border-1 rounded-lg p-2 bg-transparent mb-2"
         ></input>
         <button
@@ -119,7 +205,7 @@ const AddProducts = () => {
         </button>
       </form>
       {error && <p style={{ color: "white" }}>{error}</p>}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </div>
   );
 };

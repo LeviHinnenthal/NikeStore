@@ -14,7 +14,7 @@ import { Toaster } from "sonner";
 import { CartProvider } from "./context/CartContext";
 import Checkout from "./components/Checkout/Checkout";
 import Summary from "./components/Checkout/Summary";
-
+import AddProducts from "./components/AddProds/AddProducts";
 function App() {
   useEffect(() => {
     WebFont.load({

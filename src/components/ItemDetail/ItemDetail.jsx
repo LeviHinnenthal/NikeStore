@@ -70,12 +70,12 @@ const ItemDetail = ({
         <Card className="w-full max-h-[600px] md:w-[51%] mr-[1%] h-[80vh]">
           <img
             alt="Product Image"
-            className="object-contain z-1 absolute w-full bg-[#f6f6f6] h-full object-center"
+            className="object-cover z-1 absolute w-full bg-[#f6f6f6] h-full object-center"
             src={img}
           />
           <img
             alt="Product Image "
-            className={`object-contain z-10 bg-[#f6f6f6] h-full object-center ${
+            className={`object-cover z-10 bg-[#f6f6f6] h-full object-center ${
               imgPrincipal ? "visible" : "hidden"
             }`}
             src={imgPrincipal}
