@@ -10,7 +10,7 @@ const BannerPrincipal = () => {
   return (
     <div className="flex flex-col items-center mx-auto">
       <video
-        className="h-[400px] object-cover md:h-auto mb-10"
+        className="h-[400px] object-cover w-screen md:h-auto mb-10"
         autoPlay
         loop
         muted
