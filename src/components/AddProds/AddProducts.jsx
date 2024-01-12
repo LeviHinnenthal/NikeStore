@@ -86,6 +86,7 @@ const AddProducts = () => {
           // img3Ref.current.value = "";
           // img4Ref.current.value = "";
           // img5Ref.current.value = "";
+          // img5Ref.current.value = "";
           nameRef.current.value = "";
           priceRef.current.value = "";
           // size1Ref.current.value = "";
